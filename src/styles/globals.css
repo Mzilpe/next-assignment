@@ -1,4 +1,4 @@
-:root {
+/* :root {
   --background: #ffffff;
   --foreground: #171717;
 }
@@ -39,4 +39,19 @@ a {
   html {
     color-scheme: dark;
   }
+} */
+
+.products{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+}
+
+
+.product{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
