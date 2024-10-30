@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 interface ProductsProps {
   products: [
@@ -19,28 +20,28 @@ interface ProductsProps {
 }
 
 const Products = ({ products, categories }: ProductsProps) => {
-  console.log("Clients side fetching", products);
+  const router = useRouter();
+
+  const handleProductClick = (id: number) => {
+    console.log(id);
+    router.push(`/products/${id}`);
+  };
 
   return (
     <>
       <div>
         {categories.map((category) => {
-          return (
-            <button
-              key={category}
-              onClick={(e) => {
-                console.log(e);
-              }}
-            >
-              {category}
-            </button>
-          );
+          return <button key={category}>{category}</button>;
         })}
       </div>
       <div className="products">
         {products.map((product) => {
           return (
-            <div className="product" key={product.id}>
+            <div
+              className="product"
+              key={product.id}
+              onClick={() => handleProductClick(product.id)}
+            >
               <Image
                 src={product.image}
                 width={200}
